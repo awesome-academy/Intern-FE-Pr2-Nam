@@ -1,0 +1,23 @@
+$Mobile: 464px;
+$Tablet: 768px;
+$Desktop: 1024px;
+
+@mixin Responsive($Screen) {
+    @if $Screen==Mobile {
+        @media only screen and (max-width: $Mobile) {
+            @content;
+        }
+    }
+
+    @else if $Screen==Tablet {
+        @media only screen and (max-width: $Tablet) {
+            @content;
+        }
+    }
+
+    @else if $Screen==Desktop {
+        @media only screen and (max-width: $Desktop) {
+            @content;
+        }
+    }
+}
