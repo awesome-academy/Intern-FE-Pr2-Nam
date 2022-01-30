@@ -1,13 +1,19 @@
-import React from 'react';
+import React,{ Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import './style/_global.scss';
+import './i18n';
+import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Suspense fallback="Loading...">
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>,
+  </Suspense>,
   document.getElementById('root')
 );
 
