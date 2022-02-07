@@ -4,3 +4,12 @@ $textColor: #555;
 $blackColor: #000000;
 $whiteColor: #ffffff;
 $borderDefault: 1px solid #ebebeb;
+$backgroundColor: #262626;
+
+
+//z-index
+$z-modal     : 9000; 
+$z-overlay   : 8000;
+$z-dropdown  : 7000;
+$z-header    : 6000;
+$z-footer    : 5000;

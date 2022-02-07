@@ -1,9 +1,9 @@
-import './style/_global.scss'
 
+import Header from './Component/Header/Header'
 function App() {
   return (
     <div className="App">
-      
+      <Header />
     </div>
   );
 }

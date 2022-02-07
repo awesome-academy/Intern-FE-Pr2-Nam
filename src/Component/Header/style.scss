@@ -1,0 +1,208 @@
+@import '../../style/mixin';
+@import '../../style/variables';
+
+.header {
+    @include position(fixed, 0);
+    height: 6rem;
+    background-color: $whiteColor;
+    box-shadow: 0 4px 20px #26262633;
+    width: 100%;
+    z-index: $z-header;
+    margin-bottom: 32px;
+
+    .container {
+        height: 100%;
+    }
+
+    &__toggle {
+        display: none;
+        font-size: 2rem;
+        line-height: 1.5;
+        margin-left: 1rem;
+        
+        @include Responsive(Mobile) {
+            display: block ;
+            z-index: $z-dropdown;
+        }
+    }
+
+    &__list {
+        @include flex(row, space-between, center);
+        height: 100%;
+    }
+
+    &__logo {
+        @include paddingY(0.3125rem,0.3125rem);
+        display: inline-block;
+        font-size: 1.75rem;
+
+        &__text {
+            color: $primaryColor;
+            font-weight: 700;
+        }
+    }
+    
+    &__nav {
+        display: inline-block;
+
+        @include Responsive(Mobile) {
+            display: none;
+        }
+
+        &__list {
+            list-style: none;
+            display: flex;
+        }
+
+        &__item {
+            width: 11rem;
+            display: inline-block;
+            position: relative;
+
+            span {             
+                color: $navColor;
+                display: flex;
+                padding: 0 1.6rem;
+                cursor: pointer;
+                font-size: 1.75rem;
+                transition: all 0.4s;
+
+                &:before {
+                    @include position(absolute, calc(50% - 2px), -2rem, 0, 0);
+                    content: "";
+                    width: 1.4rem;
+                    height: 0.2rem;
+                    border-radius: 0.4rem;
+                    background-color: $primaryColor;
+                    opacity: 0;
+                    transition: all .35s ease;
+                }
+
+                &:hover {
+                    color: $primaryColor;
+
+                    &::before {
+                        opacity: 1;
+                        left: -1px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__account {
+        @include Responsive(Mobile) {
+            width: 15%;
+        }
+
+        &__list {
+            @include flex(row, center, center);
+            
+            .mobile-hide {
+                @include Responsive(Mobile) {
+                    @include paddingX(0,0);
+                    display: none;
+                }
+            }
+        }
+
+        &__item {
+            @include paddingX(1.4rem,1.4rem);
+            color: $blackColor;
+            font-size: 1.4rem;
+
+            svg {
+                transition: all .35s ease;
+                font-size: 1.4rem;
+
+                &:hover {
+                    color: $primaryColor;
+                }
+
+                @include Responsive(Mobile) {
+                    font-size: 2rem;
+                }
+            }
+
+            &:focus {
+                box-shadow: unset !important;
+            }
+
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+    }
+
+    &_menu {
+        @include position(fixed, 0, 0, unset, 0);
+        box-shadow: 0 4px 20px rgb(38 38 38 / 10%);
+        z-index: $z-dropdown;
+        height: 100vh;
+        width: 30rem;
+        transition: all .3s ease-in-out;
+
+        nav {
+            @include position(absolute, 0, 0, 0, 0);
+            width: 30rem;
+            border-right: 1px solid $whiteColor;
+            background-color: $backgroundColor;
+            color: $whiteColor;
+            overflow-y: auto;
+        }
+
+        &__close-btn{
+            font-size: 2rem;
+            line-height: 1.5;
+            margin-left: 1rem;
+            color: $whiteColor;
+            position: absolute;
+            right: 2rem;
+        }
+
+        &__logo {
+            margin: 1.5rem 0;
+            width: 100%;
+            font-weight: 300;
+            text-align: left;
+            transition: width .3s ease-in-out;
+            padding-left: 3.5rem;
+
+            span {
+                color: $primaryColor;
+                font-weight: 700;
+                font-size: 3.6rem;
+            }
+        }
+
+        &__list {
+            margin-top: 3rem;
+            padding: 3rem 0 1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            &__item {
+                padding-left: 3.5rem;
+                color : $whiteColor;
+                line-height: 5.5rem;
+
+                span {
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &__account {
+            margin-top: 5rem;
+            display: flex;
+            align-items: center;
+            font-size: 3.5rem;
+            justify-content: space-around;
+
+            &__item {
+                color: $whiteColor !important;
+            }
+        }
+    }
+}
