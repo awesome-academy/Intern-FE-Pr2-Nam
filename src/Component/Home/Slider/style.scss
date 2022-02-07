@@ -1,0 +1,44 @@
+@import '../../../style/mixin';
+@import '../../../style/variables';
+.SliderBanner {
+    margin-top: 6rem;
+
+    &_img {
+        height: 60rem;
+
+        @include Responsive(Mobile) {
+            object-fit: cover;
+        }
+    }
+
+    .slick-arrow {
+
+        &.slick-prev {
+            z-index: $z-slider-btn;
+            left: 2.5rem;
+        }
+
+        &.slick-next {
+            right: 4rem;
+        }
+
+        &.slick-next,
+        &.slick-prev {
+            @include transition(ease-in-out, 0.4s);
+            opacity: 0.4;
+
+            &::before {
+                font-size: 4rem;
+            }
+
+            &:hover {
+                opacity: 1;
+
+                &::before {
+                    font-size: 5rem;
+                }
+            }
+
+        }
+    }
+}

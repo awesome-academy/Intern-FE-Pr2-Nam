@@ -17,6 +17,10 @@ html {
 a {
     text-decoration: none!important;
     color: #000;
+    
+    &:hover {
+        color: $primaryColor;
+    }
 }
 
 ul {
@@ -43,4 +47,20 @@ button {
     color: #212529;
     text-align: center;
     text-decoration: none;
+}
+
+.btn_view-more {
+    padding: 1.3rem 4rem;
+    border: 1px solid $primaryColor;
+    font-size: 16px;
+    color : $primaryColor;
+    font-weight: 600;
+    transition: all .4s;
+    -webkit-transition: .4s all;
+    
+    &:hover {
+        background-color: $primaryColor;
+        color: $whiteColor;
+    }
+
 }

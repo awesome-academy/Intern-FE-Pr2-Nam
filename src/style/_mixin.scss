@@ -1,13 +1,31 @@
 $Mobile: 464px;
 $Tablet: 768px;
 $Desktop: 1024px;
+
 @mixin paddingX($left, $right) {
     padding-left: $left !important;
     padding-right: $right !important;
 }
+
 @mixin paddingY($top, $bottom) {
     padding-top: $top;
     padding-bottom: $bottom;
+}
+
+@mixin marginX($left, $right) {
+    margin-left: $left !important;
+    margin-right: $right !important;
+}
+
+@mixin marginY($top, $bottom) {
+    margin-top: $top;
+    margin-bottom: $bottom;
+}
+@mixin transition($type, $time) {
+    -webkit-transitionn:  $type, $time;
+    -moz-transitionn:  $type, $time;
+    -o-transitionn:  $type, $time;
+    transition: $type, $time;
 }
 @mixin flex($flex-direction,$justify-content:unset,$align-items:unset) {
     display: flex;
