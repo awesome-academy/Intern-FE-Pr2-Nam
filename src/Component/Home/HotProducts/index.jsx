@@ -37,7 +37,7 @@ function HotProducts() {
             ))}
         </div>
         <Link className="product-homepage__more" to="/shop">
-          <button className="btn btn_view-more">View more</button>
+          <button className="btn btn_view-more">{t("View more")}</button>
         </Link>
       </Container>
     </section>

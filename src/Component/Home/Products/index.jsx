@@ -24,9 +24,7 @@ function Products() {
         <div className="justify-content-center mb-2 row">
           <div className="col-sm-8">
             <p className="text-center text-muted mb-4 product-homepage__text">
-              Check out our new furniture collection! Cozy sofa, fancy chair,
-              wooden casket, and many more. The new collection brings an
-              informal elegance to your home.
+              {t("Check out our new furniture collection!")}
             </p>
           </div>
         </div>
@@ -39,7 +37,7 @@ function Products() {
             ))}
         </div>
         <Link className="product-homepage__more" to="/shop">
-          <button className="btn btn_view-more">View more</button>
+          <button className="btn btn_view-more">{t("View more")}</button>
         </Link>
       </Container>
     </section>

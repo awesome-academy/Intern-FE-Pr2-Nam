@@ -12,6 +12,7 @@ import {
   faBars,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+
 function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { t, i18n } = useTranslation();
@@ -55,37 +56,37 @@ function Header() {
               <div className="header_menu__logo">
                 <span>Flatlogic</span>
               </div>
-              <ul className="header_menu_list">
+              <ul className="header_menu__list">
                 <li>
-                  <Link className="header_menu_list__item" to="/">
+                  <Link className="header_menu__list__item" to="/">
                     <span>{t("Home")}</span>
                   </Link>
                 </li>
 
                 <li>
-                  <Link className="header_menu_list__item" to="/shop">
+                  <Link className="header_menu__list__item" to="/shop">
                     <span>{t("Shop")}</span>
                   </Link>
                 </li>
 
                 <li>
-                  <Link className="header_menu_list__item" to="/account">
+                  <Link className="header_menu__list__item" to="/account">
                     <span>{t("Account")}</span>
                   </Link>
                 </li>
               </ul>
-              <div className="header_menu_account">
+              <div className="header_menu__account">
                 <button
                   type="button"
                   onClick={handleChangeLanguage}
-                  className="header_menu_account__item"
+                  className="header_menu__account__item"
                 >
                   <FontAwesomeIcon icon={faGlobe} />
                 </button>
-                <Link className="header_menu_account__item" to="/signin">
+                <Link className="header_menu__account__item" to="/signin">
                   <FontAwesomeIcon icon={faUser} />
                 </Link>
-                <Link className="header_menu_account__item" to="/shop">
+                <Link className="header_menu__account__item" to="/shop">
                   <FontAwesomeIcon icon={faSearch} />
                 </Link>
               </div>

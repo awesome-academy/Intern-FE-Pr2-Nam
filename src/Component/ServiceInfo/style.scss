@@ -1,0 +1,70 @@
+@import "../../style/variables";
+@import "../../style/mixin";
+.service-info {
+    height: 18rem;
+    border-top: $borderDefault;
+    border-bottom: $borderDefault;
+    @include paddingY(1rem, 1rem);
+    @include marginY(8rem,8rem);
+    @include Responsive(Mobile) {
+        border-top: 0;
+        border-bottom: 0;
+    }
+
+    &__item {
+        height: 85%;
+
+        &:not(:last-child) {
+            border-right: $borderDefault;
+        }
+
+        @include Responsive(Tablet) {
+            &:not(:last-child) {
+                border-bottom: $borderDefault;
+            }
+        }
+    }
+    &__icon{
+        color : $primaryColor;
+        font-size: 4.8rem;
+        margin-right: 1.4rem;
+
+        @include Responsive(Tablet) {
+            font-size: 3.8rem;
+        }
+
+        @include Responsive(Mobile) {
+            font-size: 5.5rem;
+        }
+    }
+
+    &__text {
+        h5 {
+            font-weight: 700;
+            font-size: 1.75rem;
+            margin-bottom: 0.7rem;
+
+            @include Responsive(Tablet) {
+                font-size: 1.5rem;
+            }
+
+            @include Responsive(Mobile) {
+                font-size: 2.5rem;
+            }
+        }
+
+        p {
+            color :$textColor;
+            font-size: 1.4rem;
+            margin-bottom: 0;
+
+            @include Responsive(Tablet) {
+                font-size: 1.3rem;
+            }
+
+            @include Responsive(Mobile) {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
