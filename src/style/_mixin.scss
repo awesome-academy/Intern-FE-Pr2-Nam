@@ -21,12 +21,14 @@ $Desktop: 1024px;
     margin-top: $top;
     margin-bottom: $bottom;
 }
+
 @mixin transition($type, $time) {
     -webkit-transitionn:  $type, $time;
     -moz-transitionn:  $type, $time;
     -o-transitionn:  $type, $time;
     transition: $type, $time;
 }
+
 @mixin flex($flex-direction,$justify-content:unset,$align-items:unset) {
     display: flex;
     flex-direction: $flex-direction;
