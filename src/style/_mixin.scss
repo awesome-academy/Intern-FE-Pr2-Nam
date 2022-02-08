@@ -6,17 +6,14 @@ $Desktop: 1024px;
     padding-left: $left !important;
     padding-right: $right !important;
 }
-
 @mixin paddingY($top, $bottom) {
     padding-top: $top;
     padding-bottom: $bottom;
 }
-
 @mixin marginX($left, $right) {
     margin-left: $left !important;
     margin-right: $right !important;
 }
-
 @mixin marginY($top, $bottom) {
     margin-top: $top;
     margin-bottom: $bottom;

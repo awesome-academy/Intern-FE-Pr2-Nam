@@ -1,0 +1,98 @@
+@import '../../style/variables';
+@import '../../style/mixin';
+
+.footer {
+    height: 100%;
+    background-color: $backgroundColor;
+    padding-top: 2.4rem;
+    margin-top: 5rem;
+
+    @include Responsive(Mobile) {
+        margin-top: 25rem;
+    }
+
+    &__item {
+        @include Responsive(Mobile) {
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+
+    &__main {
+        @include Responsive(Mobile) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__logo {
+        color : $whiteColor;
+        font-size: 2rem;
+        font-weight: 700;
+
+        @include Responsive(Mobile) {
+            font-size: 2.5rem;
+        }
+    }
+    
+    &__text {
+        color : $whiteColor;
+        font-size: 1.4rem;
+
+        @include Responsive(Tablet) {
+            font-size: 1.2rem;
+        }
+
+        @include Responsive(Mobile) {
+            font-size: 2rem;
+        }
+    }
+
+    &__contact {
+        @include Responsive(Mobile) {
+            flex-direction: column;
+        }
+    }
+
+    &__social {
+        margin-top: 3rem;
+
+        a {
+            margin-right: 1.5rem;
+            color : $whiteColor;
+            font-size: 2rem;
+
+            @include Responsive(Mobile) {
+                font-size: 2.5rem;
+            }
+        }
+
+        @include Responsive(Mobile) {
+            text-align: center;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase;
+        color : $whiteColor;
+        font-size: 2rem;
+        font-weight: 700;
+
+        @include Responsive(Tablet) {
+            font-size: 1.8rem;
+        }
+
+        @include Responsive(Mobile) {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__link {
+        display: block;
+        color : $textColor;
+        font-size: 1.4rem;
+
+        @include Responsive(Mobile) {
+            font-size: 2rem;
+        }
+    }
+}
