@@ -26,6 +26,12 @@ $Desktop: 1024px;
     transition: $type, $time;
 }
 
+@mixin boxShadow($shiftRight, $shiftDown, $spread , $blur, $color) {
+    -webkit-box-shadow: $shiftRight $shiftDown $spread $blur $color;
+        -moz-box-shadow: $shiftRight $shiftDown $spread $blur $color;
+        box-shadow: $shiftRight $shiftDown $spread $blur $color;
+}
+
 @mixin flex($flex-direction,$justify-content:unset,$align-items:unset) {
     display: flex;
     flex-direction: $flex-direction;
