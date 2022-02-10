@@ -4,7 +4,10 @@ import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Paginate from "../../Pagination";
 import { useEffect } from "react";
-import { getShopProducts } from "../../../store/Slide/ProductsSlide";
+import {
+  getShopProducts,
+  getProducts,
+} from "../../../store/Slide/ProductsSlide";
 
 function ProductShop() {
   const dispatch = useDispatch();
@@ -17,6 +20,16 @@ function ProductShop() {
   useEffect(() => {
     dispatch(getShopProducts(filter));
   }, [filter, dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      getProducts({
+        ...filter,
+        _page: "",
+        _limit: "",
+      })
+    );
+  }, []);
 
   const content =
     shopProductsList &&

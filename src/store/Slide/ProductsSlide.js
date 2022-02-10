@@ -24,6 +24,11 @@ const initialState  = {
             _limit: 9,
             _sort: '',
             _order: '',
+            category_like: "",
+            title_like: "",
+            price_range_like: "",
+            rating_like: "",
+            brand_lile: "",
         },
         list: [],
         isLoading: false,
@@ -33,7 +38,7 @@ const initialState  = {
         list: [],
         isLoading: false,
     },
-    selected: '',
+    selected: [],
 
 }
 
@@ -101,6 +106,8 @@ export const getPagination = createAsyncThunk(
     }
 )
 
+// 
+
 export const ProductsSlice  = createSlice({
     name: 'products',
     initialState,
@@ -112,7 +119,10 @@ export const ProductsSlice  = createSlice({
             state.shop.searchTerm = action.payload
         },
         setSelected: (state,action) => {
-            state.selected = action.payload
+            state.selected.push(action.payload)
+        },
+        clearSelected: (state) => {
+            state.selected = []
         }
     },
     extraReducers: builder => {
@@ -166,7 +176,8 @@ export const ProductsSlice  = createSlice({
 export const { 
 setProductsShopFilter,
 search,
-setSelected
+setSelected,
+clearSelected
 
 } = ProductsSlice.actions
 export default ProductsSlice.reducer
