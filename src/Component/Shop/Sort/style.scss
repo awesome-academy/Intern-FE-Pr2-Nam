@@ -1,0 +1,30 @@
+@import '../../../style/mixin';
+@import '../../../style/variables';
+
+.sort {
+    width: 50%;
+    text-align: center;
+    
+    &-by {
+        @include flex(row, center, center);
+
+        label {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-right: 2rem;
+        }
+
+        &__select {
+            height: 4rem;
+            width: 16rem;
+
+            select {
+                height: 100%;
+                width: 100%;
+                padding-left: 1rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
