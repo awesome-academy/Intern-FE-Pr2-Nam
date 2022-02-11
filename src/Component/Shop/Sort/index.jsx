@@ -8,7 +8,6 @@ import "./style.scss";
 function Sort() {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.products.shop.filter);
-  const selected = useSelector((state) => state.products.selected);
   const sortOptions = ["ASC", "DESC"];
   const DEFAULT_OPTIONS = "Most popular";
 
@@ -30,7 +29,7 @@ function Sort() {
       <div className="sort-by">
         <label>Sort by:</label>
         <div className="sort-by__select">
-          <select onChange={(e) => handlePageChange(e)} value={selected}>
+          <select onChange={(e) => handlePageChange(e)}>
             <option>{DEFAULT_OPTIONS}</option>
             {sortOptions.map((item, index) => (
               <option value={item} key={index}>
