@@ -22,14 +22,18 @@ const initialState  = {
         filter : {
             _page: 1,
             _limit: 9,
+            _sort: '',
+            _order: '',
         },
         list: [],
         isLoading: false,
+        searchTerm : '',
     },
     pagination: {
         list: [],
         isLoading: false,
     },
+    selected: '',
 
 }
 
@@ -101,9 +105,15 @@ export const ProductsSlice  = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setProductsFilter: (state,action) => {
-            state.filter = action.payload
+        setProductsShopFilter: (state,action) => {
+            state.shop.filter = action.payload
         },
+        search: (state,action) => {
+            state.shop.searchTerm = action.payload
+        },
+        setSelected: (state,action) => {
+            state.selected = action.payload
+        }
     },
     extraReducers: builder => {
         builder
@@ -154,7 +164,9 @@ export const ProductsSlice  = createSlice({
 })
 
 export const { 
-setProductsFilter,
-setCurrentPage
+setProductsShopFilter,
+search,
+setSelected
+
 } = ProductsSlice.actions
 export default ProductsSlice.reducer

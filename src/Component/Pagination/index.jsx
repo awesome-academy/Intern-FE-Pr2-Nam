@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import {
-  setCurrentPage,
   getShopProducts,
   getPagination,
 } from "../../store/Slide/ProductsSlide";
@@ -35,7 +34,6 @@ function Paginate() {
 
   const handlePageChange = (num) => {
     dispatch(getShopProducts({ ...filter, _page: num }));
-    dispatch(setCurrentPage(num));
   };
 
   return (

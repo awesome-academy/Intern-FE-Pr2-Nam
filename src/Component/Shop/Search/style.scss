@@ -1,0 +1,29 @@
+@import '../../../style/mixin';
+@import '../../../style/variables';
+
+.search {
+    width: 30%;
+    height: 4rem;
+    position: relative;
+
+    .form-control {
+        height: 100%;
+        border-radius: 2rem;
+        font-size: 1.3rem;
+        padding-left: 2rem
+    }
+
+    &-btn {
+        @include position(absolute, 0, unset, 0, 0);
+        @include paddingX(2rem, 2rem);
+        background-color: $primaryColor;
+        height: 100%;
+        border-top-right-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        
+         svg {
+             font-size: 1.6rem;
+             color : $textColor;
+         }
+     }
+}
