@@ -132,6 +132,24 @@
                 color: $primaryColor;
             }
         }
+
+        .cart {
+            position: relative;
+            
+            &_total {
+                @include position(absolute, -1rem, 2.5rem, 0, 0);
+                height: 1.8rem;
+                width: 1.8rem;
+                line-height: 0.5rem;
+                font-size: 1.3rem;
+                color: $whiteColor;
+                border-radius: 50%;
+                background-color: $primaryColor;
+                align-items:center;
+                padding: 0.5rem;
+                text-align: center;
+            }
+        }
     }
 
     &_menu {

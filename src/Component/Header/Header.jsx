@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   faSearch,
   faUser,
@@ -17,6 +18,7 @@ function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState("en");
+  const cartQuantity = useSelector((state) => state.cart.cartQuantity);
 
   function handleChangeLanguage() {
     if (language === "en") {
@@ -127,8 +129,9 @@ function Header() {
               <Link className="header__account__item mobile-hide" to="/signin">
                 <FontAwesomeIcon icon={faUser} />
               </Link>
-              <Link className="header__account__item" to="/cart">
+              <Link className="header__account__item cart" to="/cart">
                 <FontAwesomeIcon icon={faCartArrowDown} />
+                <span className="cart_total">{cartQuantity}</span>
               </Link>
             </li>
           </ul>

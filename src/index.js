@@ -9,6 +9,7 @@ import {Provider} from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css";
 import './style/_global.scss';
 
 ReactDOM.render(
