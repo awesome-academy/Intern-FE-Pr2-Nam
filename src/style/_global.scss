@@ -83,3 +83,25 @@ input {
         @include boxShadow(0, 0, 0, 0.25rem, rgba(218, 116, 34, 0.25)!important)
     }
   }
+  
+.ant-dropdown {
+    @include transition(all, .1s);
+    z-index: $z-dropdown;
+
+    &-menu-item {
+        padding-bottom: 1rem;
+
+        &:not(:last-child) {
+            border-bottom: $borderDefault;
+        }
+
+        &:hover {
+            background-color: $primaryColor;
+        }
+        
+    }
+    
+    &-menu-title-content {
+        text-align: center;
+    }
+}

@@ -37,7 +37,23 @@ export const getUserFromDbJson = createAsyncThunk(
 export const UserSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
+    extraReducers: builder =>{
+        builder
+        .addCase(getUserFromDbJson.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(getUserFromDbJson.fulfilled, (state, action) => {
+            const { full_name, email, phone} = action.payload
+            localStorage.setItem('user-info', JSON.stringify({
+                full_name,
+                email,
+                phone
+            }))
+            state.isLoading = false
+        })
+        .addCase(getUserFromDbJson.rejected, (state, action) => {
+            state.isLoading = false
+        })
     }
 })
 

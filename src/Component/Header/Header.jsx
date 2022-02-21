@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Menu, Dropdown } from 'antd';
 import {
   faSearch,
   faUser,
@@ -17,6 +18,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase";
 
 function Header() {
@@ -25,10 +27,19 @@ function Header() {
   const [language, setLanguage] = useState("en");
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
   const [user, setUser] = useState({});
+  const displayName = useSelector((state) => state.user.displayName);
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
+  const navigate = useNavigate()
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser)
   })
+
+  const logOut = async () => {
+    await signOut(auth)
+    localStorage.removeItem('user-info')
+    navigate("/")
+  }
 
   function handleChangeLanguage() {
     if (language === "en") {
@@ -43,6 +54,17 @@ function Header() {
   function handleToggleMenu() {
     setToggleMenu((prevState) => !prevState);
   }
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="1">
+        <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <button onClick={logOut}>Log out</button>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <header className="header">
@@ -136,10 +158,18 @@ function Header() {
               <Link className="header__account__item mobile-hide" to="/shop">
                 <FontAwesomeIcon icon={faSearch} />
               </Link>
-              <Link className="header__account__item mobile-hide" to="/signin">
-                <FontAwesomeIcon icon={faUser} />
-              </Link>
-              <Link className="header__account__item cart-header" to="/cart">
+              {userInfo ?
+                <Dropdown overlay={menu}  >
+                  <Link className="ant-dropdown-link" to="/profile" >
+                    {userInfo.full_name}
+                  </Link>
+                </Dropdown>
+                :
+                <Link className="header__account__item mobile-hide" to="/signin">
+                  <FontAwesomeIcon icon={faUser} />
+                </Link>
+              }
+              <Link id="cart" className="header__account__item cart-header" to="/cart">
                 <FontAwesomeIcon icon={faCartArrowDown} />
                 <span className="cart-header__total">{cartQuantity}</span>
               </Link>
@@ -147,7 +177,7 @@ function Header() {
           </ul>
         </div>
       </Container>
-    </header>
+    </header >
   );
 }
 

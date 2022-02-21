@@ -1,0 +1,36 @@
+@import "../../style/mixin";
+@import "../../style/variables";
+
+.signup {
+    background-image: url("https://flatlogic-ecommerce.herokuapp.com/_next/static/media/bg.450cfc7781058eb8f7c3e254a483d147.png")
+}
+
+.signin {
+    background-image: url("https://flatlogic-ecommerce.herokuapp.com/_next/static/media/bg.906ad1378ec90ffcd11843d18652d6ed.svg");
+
+}
+
+.signup,
+.signin {
+    height: 100vh;
+    background-size: cover;
+    color: $primaryColor;
+
+    .form {
+        margin-top: 15rem;
+
+        &-title {
+            color: $primaryColor;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+    }  
+    
+    &__link {
+        font-size: 2rem;
+        font-weight: 500;
+        color: $textColor;
+
+    }
+}

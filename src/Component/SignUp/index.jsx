@@ -14,7 +14,9 @@ import { regex_email, regex_phone, regex_password } from '../../const/regex'
 import { useTranslation } from "react-i18next";
 import { addUserToDbJson } from "../../store/Slide/UserSlice"
 
+
 function Signup() {
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate()
@@ -79,62 +81,65 @@ function Signup() {
 
   return (
     <div className="signup">
-      <div>
-        <h3> Register User </h3>
-        <Form className="form" onSubmit={formik.handleSubmit}>
-          <h2 className="form-title">{t('Register')}</h2>
-          <FormGroup
-            label={t('Full name')}
-            id='full_name'
-            type='full_name'
-            name='full_name'
-            placeholder='Enter your Full Name'
-            value={formik.values.full_name}
-            handleChange={formik.handleChange}
-            error={formik.errors.full_name}
-          />
-          <FormGroup
-            label={t('Email')}
-            id='email'
-            type='email'
-            name='email'
-            placeholder='Enter your Email'
-            value={formik.values.email}
-            handleChange={formik.handleChange}
-            error={formik.errors.email}
-          />
-          <FormGroup
-            label={t('Phone number')}
-            id='phone'
-            type='text'
-            name='phone'
-            placeholder='Enter your Phone'
-            value={formik.values.phone}
-            handleChange={formik.handleChange}
-            error={formik.errors.phone}
-          />
-          <FormGroup
-            label={t('Password')}
-            id='password'
-            type='password'
-            name='password'
-            placeholder='Enter your Password'
-            value={formik.values.password}
-            handleChange={formik.handleChange}
-            error={formik.errors.password}
-          />
-          <FormGroup
-            label={t('Confirm password')}
-            id='confirm_password'
-            type='password'
-            name='confirm_password'
-            placeholder='Confirm your password'
-            value={formik.values.confirm_password}
-            handleChange={formik.handleChange}
-            error={formik.errors.confirm_password}
-          />
-          <Button variant="outline-primary" type="submit" size="lg">{t("Submit")}</Button>
-        </Form>
+      <div className="d-flex justify-content-center">
+        <div className="col-auto col-lg-4 form">
+          <Form className="form-input" onSubmit={formik.handleSubmit}>
+            <h2 className="form-title">{t('Register')}</h2>
+            <FormGroup
+              label={t('Full name')}
+              id='full_name'
+              type='full_name'
+              name='full_name'
+              placeholder='Enter your full name'
+              value={formik.values.full_name}
+              handleChange={formik.handleChange}
+              error={formik.errors.full_name}
+            />
+            <FormGroup
+              label={t('Email')}
+              id='email'
+              type='email'
+              name='email'
+              placeholder='Enter your Email'
+              value={formik.values.email}
+              handleChange={formik.handleChange}
+              error={formik.errors.email}
+            />
+            <FormGroup
+              label={t('Phone number')}
+              id='phone'
+              type='text'
+              name='phone'
+              placeholder='Enter your Phone'
+              value={formik.values.phone}
+              handleChange={formik.handleChange}
+              error={formik.errors.phone}
+            />
+            <FormGroup
+              label={t('Password')}
+              id='password'
+              type='password'
+              name='password'
+              placeholder='Enter your Password'
+              value={formik.values.password}
+              handleChange={formik.handleChange}
+              error={formik.errors.password}
+            />
+            <FormGroup
+              label={t('Confirm password')}
+              id='confirm_password'
+              type='password'
+              name='confirm_password'
+              placeholder='Confirm your password'
+              value={formik.values.confirm_password}
+              handleChange={formik.handleChange}
+              error={formik.errors.confirm_password}
+            />
+            <div className="d-flex justify-content-center align-items-center">
+              <Button variant="outline-primary" type="submit" className="btn_view-more btn text-center" size="lg">{t("Submit")}</Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );
