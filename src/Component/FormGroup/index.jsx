@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap'
 function FormGroup({ label, id, type, name, placeholder, value, handleChange, error, disabled }) {
 
     return (
-        <Form.Group className="form-gr" controlId={id}>
+        <Form.Group className="form-group" controlId={id}>
             <Form.Label className="form-label">{label} :</Form.Label>
             <Form.Control
                 className="form-input"

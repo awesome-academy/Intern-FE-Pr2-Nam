@@ -1,0 +1,20 @@
+@import "../../style/mixin";
+@import "../../style/variables";
+
+.form-group {
+    margin-bottom: 1rem;
+    
+    .form-label {
+        font-weight: 700;
+    }
+    
+    .form-input {
+        box-shadow: none;
+        padding: 1.4rem 2.4rem;
+        height: 4rem;
+        border: $borderDefault;
+        border-radius: 0;
+        background-clip: border-box;
+        background-clip: initial;
+    }
+}

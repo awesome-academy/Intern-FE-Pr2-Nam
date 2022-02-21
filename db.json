@@ -1,26 +1,19 @@
 {
   "user": [
     {
-      "id": "rCwcAg73TUfDLiOb8B6hSMVzVQl2",
-      "email": "123456@gmail.com",
-      "phone": "0986788406",
-      "password": "Namnguyen1",
-      "role": 2
-    },
-    {
-      "id": "CnW9eektyhe3Y9tekAeXQRWAfle2",
-      "full_name": "namnguyen",
+      "id": "ju99iQiByLNhKMAHm7F5ctOxy2K2",
+      "full_name": "Nam Nguyen",
       "email": "namnguyen@gmail.com",
-      "phone": "0985460629",
-      "password": "Namnguyen3",
+      "phone": "0986788405",
+      "password": "Namnguyen123",
       "role": 2
     },
     {
-      "id": "nPV7RIlbkNNfPV36GUoEDE4azYq1",
-      "full_name": "namnguy",
+      "id": "OAtc33smL2bfiZjPG6gjM1PD83p2",
+      "full_name": "Nam Nguyen",
       "email": "nguyen.phuong.nam-c@sun-asterisk.com",
       "phone": "0985460629",
-      "password": "Namnguyen2",
+      "password": "Namnguyen123",
       "role": 2
     }
   ],
