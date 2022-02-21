@@ -1,0 +1,16 @@
+@import "../../style/mixin";
+@import "../../style/variables";
+
+.payment {
+    background-image: url("https://flatlogic-ecommerce.herokuapp.com/_next/static/media/second_hero.54e92a4305d8302c245006b1e8c8a10c.jpg");
+
+    &__radio {
+        background-color: unset;
+        @include flex(row, unset, center);
+
+        label {
+            margin-left: 1rem;
+            font-weight: 700;
+        }
+    }
+}
