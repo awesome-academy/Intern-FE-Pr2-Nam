@@ -3,9 +3,23 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 import { faCartArrowDown, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import { addToCart } from "../../store/Slide/CartSlice";
 
 function ProductItem({ data }) {
   const { id, title, price, image, category } = data;
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    toast.success(t("Product has been added to your cart"), {
+      position: "top-right",
+      autoClose: 2500,
+    });
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  };
 
   return (
     <div className="product">
@@ -16,7 +30,11 @@ function ProductItem({ data }) {
         <button type="button" className="product__action__button">
           <FontAwesomeIcon icon={faHeart} />
         </button>
-        <button type="button" className="product__action__button">
+        <button
+          type="button"
+          onClick={() => handleAddToCart(data)}
+          className="product__action__button"
+        >
           <FontAwesomeIcon icon={faCartArrowDown} />
         </button>
       </div>
@@ -29,6 +47,7 @@ function ProductItem({ data }) {
         </Link>
         <h5 className="product__price">${price}</h5>
       </div>
+      <ToastContainer />
     </div>
   );
 }
