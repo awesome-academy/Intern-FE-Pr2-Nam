@@ -133,10 +133,10 @@
             }
         }
 
-        .cart {
+        .cart-header {
             position: relative;
             
-            &_total {
+            &__total {
                 @include position(absolute, -1rem, 2.5rem, 0, 0);
                 height: 1.8rem;
                 width: 1.8rem;

@@ -129,9 +129,9 @@ function Header() {
               <Link className="header__account__item mobile-hide" to="/signin">
                 <FontAwesomeIcon icon={faUser} />
               </Link>
-              <Link className="header__account__item cart" to="/cart">
+              <Link className="header__account__item cart-header" to="/cart">
                 <FontAwesomeIcon icon={faCartArrowDown} />
-                <span className="cart_total">{cartQuantity}</span>
+                <span className="cart-header__total">{cartQuantity}</span>
               </Link>
             </li>
           </ul>
