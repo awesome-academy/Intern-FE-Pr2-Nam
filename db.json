@@ -1,4 +1,29 @@
 {
+  "user": [
+    {
+      "id": "rCwcAg73TUfDLiOb8B6hSMVzVQl2",
+      "email": "123456@gmail.com",
+      "phone": "0986788406",
+      "password": "Namnguyen1",
+      "role": 2
+    },
+    {
+      "id": "CnW9eektyhe3Y9tekAeXQRWAfle2",
+      "full_name": "namnguyen",
+      "email": "namnguyen@gmail.com",
+      "phone": "0985460629",
+      "password": "Namnguyen3",
+      "role": 2
+    },
+    {
+      "id": "nPV7RIlbkNNfPV36GUoEDE4azYq1",
+      "full_name": "namnguy",
+      "email": "nguyen.phuong.nam-c@sun-asterisk.com",
+      "phone": "0985460629",
+      "password": "Namnguyen2",
+      "role": 2
+    }
+  ],
   "products": [
     {
       "id": 1,

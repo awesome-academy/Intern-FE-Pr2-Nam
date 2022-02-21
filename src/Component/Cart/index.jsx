@@ -4,7 +4,7 @@ import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from 'antd';
-import {deleteAllProduct} from "../../store/Slide/CartSlice";
+import { deleteAllProduct } from "../../store/Slide/CartSlice";
 import "./style.scss";
 const { confirm } = Modal;
 
@@ -20,7 +20,7 @@ function Cart() {
     setCartListRender(cartList);
   }, [cartList]);
 
-  const handleDeleteAllProduct= () => {
+  const handleDeleteAllProduct = () => {
     confirm({
       title: t('Delete all products?'),
       okText: t('Delete'),
@@ -57,9 +57,9 @@ function Cart() {
               )}
             </tbody>
           </table>
-            <button className="cart__del-all" onClick={() => handleDeleteAllProduct()}>
-              {t('Delete All Product!')}
-            </button>
+          <button className="cart__del-all" onClick={() => handleDeleteAllProduct()}>
+            {t('Delete All Product!')}
+          </button>
         </div>
         <div className="col-12 col-lg-4">
           <section className="cart__total">
@@ -68,7 +68,7 @@ function Cart() {
               <h6 className="cart__sub">Subtotal:</h6>
               <h6 className="cart__info">${newTotal}</h6>
             </div>
-            <hr className="my-5"/>
+            <hr className="my-5" />
             <div className="d-flex">
               <h6 className="cart__sub">Shipping:</h6>
               <h6 className="cart__info">Free Shipping</h6>

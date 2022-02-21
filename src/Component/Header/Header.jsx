@@ -13,12 +13,22 @@ import {
   faBars,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../../firebase";
 
 function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState("en");
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+  })
 
   function handleChangeLanguage() {
     if (language === "en") {
