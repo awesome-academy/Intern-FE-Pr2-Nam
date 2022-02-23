@@ -31,7 +31,7 @@ function Login() {
                     .required(t("Required"))
                     .matches(regex_password, t("Password must be 7-19 charactors and contain at least one letter, one number and a special charactors"))
         }),
-        onSubmit: async (formValue) => {
+        onSubmit: async (value) => {
             try {
                 const { email, password } = formik.values
                 const userFirebase = await signInWithEmailAndPassword(
@@ -41,7 +41,7 @@ function Login() {
                 )
                 const user = userFirebase.user
                 await dispatch(getUserFromDbJson(user.uid))
-                navigate('/')
+                navigate(-1)
             } catch (err) {
                 return err.message
             }

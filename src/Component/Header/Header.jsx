@@ -38,6 +38,7 @@ function Header() {
   const logOut = async () => {
     await signOut(auth)
     localStorage.removeItem('user-info')
+    localStorage.removeItem('user-payment-info')
     navigate("/")
   }
 
@@ -169,7 +170,7 @@ function Header() {
                   <FontAwesomeIcon icon={faUser} />
                 </Link>
               }
-              <Link id="cart" className="header__account__item cart-header" to="/cart">
+              <Link className="header__account__item cart-header" to="/cart">
                 <FontAwesomeIcon icon={faCartArrowDown} />
                 <span className="cart-header__total">{cartQuantity}</span>
               </Link>
@@ -177,7 +178,7 @@ function Header() {
           </ul>
         </div>
       </Container>
-    </header >
+    </header>
   );
 }
 

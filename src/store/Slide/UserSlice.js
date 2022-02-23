@@ -5,7 +5,8 @@ const userInfo = JSON.parse(localStorage.getItem('user-info'));
 
 const initialState = {
     displayName: userInfo ? userInfo.full_name : '',
-    isLoading: false
+    isLoading: false,
+    historyOrder: []
 }
 
 export const addUserToDbJson = createAsyncThunk(
@@ -37,6 +38,14 @@ export const getUserFromDbJson = createAsyncThunk(
 export const UserSlice = createSlice({
     name: 'user',
     initialState,
+    reducers: {
+        setHistoryOrder: (state, action) => {
+            let checkExisted = state.historyOrder.some(item => item.cart === action.payload.cart);
+            if (!checkExisted) {
+                state.historyOrder.push(action.payload)
+            }
+        }
+    },
     extraReducers: builder =>{
         builder
         .addCase(getUserFromDbJson.pending, (state) => {
@@ -58,6 +67,6 @@ export const UserSlice = createSlice({
 })
 
 export const { 
-
+    setHistoryOrder
 } = UserSlice.actions
 export default UserSlice.reducer

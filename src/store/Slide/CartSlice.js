@@ -6,6 +6,14 @@ const initialState = {
     cartList: cartItemLocalStorage ? cartItemLocalStorage.cartList : [],
     total:  cartItemLocalStorage ? cartItemLocalStorage.total : 0,
     cartQuantity: cartItemLocalStorage ? cartItemLocalStorage.cartQuantity : 0,
+    payment_info: {
+        address: '',
+        email: '',
+        full_name: '',
+        message: '',
+        payment_method: '',
+        phone: '',
+    }
 }
 
 export const CartSlice = createSlice({
@@ -60,6 +68,9 @@ export const CartSlice = createSlice({
             state.cartList= []
             state.cartQuantity= 0;
             localStorage.setItem('cart-list', JSON.stringify(state));
+        },
+        setPaymentInfo: (state, action) => {
+            state.payment_info = action.payload
         }
 
     }
@@ -69,6 +80,7 @@ export const {
     addToCart,
     updateQuantity,
     deleteProductInCart,
-    deleteAllProduct
+    deleteAllProduct,
+    setPaymentInfo
 } = CartSlice.actions
 export default CartSlice.reducer

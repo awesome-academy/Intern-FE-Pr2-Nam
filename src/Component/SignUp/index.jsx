@@ -10,7 +10,7 @@ import { auth } from "../../firebase";
 import { useFormik } from "formik";
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
-import { regex_email, regex_phone, regex_password } from '../../const/regex'
+import { regex_email, regex_password, regex_phone, regex_name } from '../../const/regex'
 import { useTranslation } from "react-i18next";
 import { addUserToDbJson } from "../../store/Slide/UserSlice"
 
@@ -34,7 +34,8 @@ function Signup() {
       full_name:
         Yup.string()
           .required(t("Required"))
-          .min(4, t("Must be 4 charactor or more")),
+          .matches(regex_name, t("Please enter a valid name"))
+          .max(15, t("Max length reached")),
       email:
         Yup.string()
           .required(t("Required"))

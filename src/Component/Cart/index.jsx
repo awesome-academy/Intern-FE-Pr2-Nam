@@ -3,8 +3,10 @@ import { Container } from "react-bootstrap";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
 import { deleteAllProduct } from "../../store/Slide/CartSlice";
+import { setHistoryOrder } from "../../store/Slide/UserSlice"
 import "./style.scss";
 const { confirm } = Modal;
 
@@ -12,9 +14,18 @@ function Cart() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   let cartList = useSelector((state) => state.cart.cartList);
-  let total = useSelector((state) => state.cart.total);
+  let total = useSelector((state) => state.cart.total)
   let newTotal = total.toLocaleString('it-IT')
   const [cartListRender, setCartListRender] = useState();
+
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
+  const userPaymentInfoLocal = JSON.parse(localStorage.getItem('user-payment-info'));
+  const userPaymentInfo = useSelector((state) => state.cart.payment_info)
+
+  const usePaymentCheck = userPaymentInfoLocal ? userPaymentInfoLocal : userPaymentInfo;
+  const checkForConfirm = Object.values(userPaymentInfo).some(item => item == "");
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setCartListRender(cartList);
@@ -30,6 +41,16 @@ function Cart() {
         dispatch(deleteAllProduct());
       },
     });
+  }
+
+  const directTo = (link) => {
+    navigate(link)
+  }
+
+  const confirmInfo = () => {
+    const arr = { cart: cartListRender }
+    const payload = { ...arr, ...usePaymentCheck }
+    dispatch(setHistoryOrder(payload))
   }
 
   return (
@@ -74,13 +95,55 @@ function Cart() {
               <h6 className="cart__info">Free Shipping</h6>
             </div>
             <hr className="my-5" />
+            {usePaymentCheck ?
+              <>
+                <div className="d-flex">
+                  <h5 className="cart__sub">Name: </h5>
+                  <h5 className="cart__info">{usePaymentCheck.full_name}</h5>
+                </div>
+                <div className="d-flex mt-3">
+                  <h5 className="cart__sub">Phone: </h5>
+                  <h5 className="cart__info">{usePaymentCheck.phone}</h5>
+                </div>
+                <div className="d-flex mt-3">
+                  <h5 className="cart__sub">Address: </h5>
+                  <h5 className="cart__info">{usePaymentCheck.address}</h5>
+                </div>
+                <div className="d-flex mt-3">
+                  <h5 className="cart__sub">Message: </h5>
+                  <h5 className="cart__info">{usePaymentCheck.message}</h5>
+                </div>
+                <div className="d-flex mt-3">
+                  <h5 className="cart__sub">Payment: </h5>
+                  <h5 className="cart__info">{usePaymentCheck.payment_method}</h5>
+                </div>
+              </>
+              :
+              <hr className="my-5" />
+            }
+            <hr className="my-5" />
+
             <div className="d-flex">
               <h5 className="cart__sub last">Total: </h5>
               <h5 className="cart__info last">${newTotal}</h5>
             </div>
-            <button type="button" className="cart__check-out">
-              Check out
-            </button>
+
+
+            {userInfo ?
+              <button type="button" className="cart__check-out" onClick={() => directTo("/payment")}>
+                Check out
+              </button>
+              :
+              <button type="button" className="cart__check-out" onClick={() => directTo("/signin")}>
+                Check out
+              </button>
+            }
+            {!checkForConfirm
+              ? <button type="button" className="cart__check-out" onClick={() => confirmInfo()}>
+                Confirm
+              </button>
+              : <div></div>
+            }
           </section>
         </div>
       </Container>
