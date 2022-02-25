@@ -47,6 +47,10 @@ button {
     color: $buttonColor;
     text-align: center;
     text-decoration: none;
+
+    &:focus {
+        box-shadow: unset;
+    }
 }
 
 .btn_view-more {
@@ -61,6 +65,7 @@ button {
     &:hover {
         background-color: $primaryColor;
         color: $whiteColor;
+        border: 1px solid $primaryColor;
     }
 
 }
@@ -104,4 +109,8 @@ input {
     &-menu-title-content {
         text-align: center;
     }
+}
+
+.ant-tabs-nav-wrap {
+    justify-content: center;
 }

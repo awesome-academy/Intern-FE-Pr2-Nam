@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from "axios";
 
 const cartItemLocalStorage = JSON.parse(localStorage.getItem('cart-list'));
 
@@ -15,6 +16,19 @@ const initialState = {
         phone: '',
     }
 }
+
+export const setOrderToDbjson = createAsyncThunk(
+    'order/post',
+    async (payment) => {
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_DATA}/order`, payment)
+            return res.data
+        } 
+        catch (err) {
+            return err
+        }
+    }
+)
 
 export const CartSlice = createSlice({
     name: 'cart',
@@ -73,6 +87,18 @@ export const CartSlice = createSlice({
             state.payment_info = action.payload
         }
 
+    },
+    extraReducers: builder =>{
+        builder
+        .addCase(setOrderToDbjson.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(setOrderToDbjson.fulfilled, (state, action) => {
+            state.isLoading = false
+        })
+        .addCase(setOrderToDbjson.rejected, (state, action) => {
+            state.isLoading = false
+        })
     }
 })
 

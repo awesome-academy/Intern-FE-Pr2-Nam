@@ -35,16 +35,37 @@ export const getUserFromDbJson = createAsyncThunk(
     }
 )
 
+export const getOrderFromDbJson = createAsyncThunk(
+    'order/get',
+    async (email) => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_DATA}/order?email=${email}`)
+            return res.data
+        } 
+        catch (err) {
+            return err
+        }
+    }
+)
+
+export const updateUser = createAsyncThunk(
+    'cart/update',
+    async ({ id, newUserData }) => {
+        try {
+            const res = await axios.patch(`${process.env.REACT_APP_DATA}/user/${id}`, newUserData)
+            return res.data
+        }
+        catch(err) {
+            return err
+        }
+    }
+)
+
 export const UserSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setHistoryOrder: (state, action) => {
-            let checkExisted = state.historyOrder.some(item => item.cart === action.payload.cart);
-            if (!checkExisted) {
-                state.historyOrder.push(action.payload)
-            }
-        }
+
     },
     extraReducers: builder =>{
         builder
@@ -52,8 +73,9 @@ export const UserSlice = createSlice({
             state.isLoading = true
         })
         .addCase(getUserFromDbJson.fulfilled, (state, action) => {
-            const { full_name, email, phone} = action.payload
+            const { full_name, email, phone, id} = action.payload
             localStorage.setItem('user-info', JSON.stringify({
+                id,
                 full_name,
                 email,
                 phone
@@ -63,10 +85,32 @@ export const UserSlice = createSlice({
         .addCase(getUserFromDbJson.rejected, (state, action) => {
             state.isLoading = false
         })
+
+
+        .addCase(getOrderFromDbJson.pending, (state, action) => {
+            state.isLoading = true
+        })
+        .addCase(getOrderFromDbJson.fulfilled, (state, action) => {
+            state.historyOrder = action.payload
+            state.isLoading = false
+        })
+        .addCase(getOrderFromDbJson.rejected, (state, action) => {
+            state.isLoading = false
+        })
+
+        .addCase(updateUser.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(updateUser.fulfilled, (state, action) => {
+            state.isLoading = false
+            localStorage.setItem('user-info', JSON.stringify(action.payload))
+        })
+        .addCase(updateUser.rejected, (state, action) => {
+            state.isLoading = false
+        })
     }
 })
 
 export const { 
-    setHistoryOrder
 } = UserSlice.actions
 export default UserSlice.reducer
