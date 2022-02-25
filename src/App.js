@@ -7,6 +7,7 @@ import Cart from './Component/Cart'
 import Signup from './Component/SignUp'
 import Signin from './Component/Signin'
 import Payment from './Component/Payment'
+import Profile from './Component/Profile'
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Signup />}/>
           <Route path="/signin" element={<Signin />}/>
           <Route path="/payment" element={<Payment />}/>
+          <Route path="/profile" element={<Profile />}/>
         </Routes>
       </div>
       <Footer/>

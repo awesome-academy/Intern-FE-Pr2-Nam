@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
-import { deleteAllProduct } from "../../store/Slide/CartSlice";
-import { setHistoryOrder } from "../../store/Slide/UserSlice"
+import { deleteAllProduct, setOrderToDbjson } from "../../store/Slide/CartSlice";
+import nextId from "react-id-generator";
 import "./style.scss";
 const { confirm } = Modal;
 
@@ -24,7 +24,6 @@ function Cart() {
 
   const usePaymentCheck = userPaymentInfoLocal ? userPaymentInfoLocal : userPaymentInfo;
   const checkForConfirm = Object.values(userPaymentInfo).some(item => item == "");
-
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -49,8 +48,10 @@ function Cart() {
 
   const confirmInfo = () => {
     const arr = { cart: cartListRender }
-    const payload = { ...arr, ...usePaymentCheck }
-    dispatch(setHistoryOrder(payload))
+    const payload = { id: nextId(), ...arr, ...usePaymentCheck, total: total }
+    dispatch(setOrderToDbjson(payload))
+    dispatch(deleteAllProduct())
+    navigate("/")
   }
 
   return (

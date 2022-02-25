@@ -27,7 +27,6 @@ function Header() {
   const [language, setLanguage] = useState("en");
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
   const [user, setUser] = useState({});
-  const displayName = useSelector((state) => state.user.displayName);
   const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const navigate = useNavigate()
 

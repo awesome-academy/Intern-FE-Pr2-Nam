@@ -32,5 +32,13 @@
   "Delete this product:": "Xoá sản phẩm này:",
   "Delete All Product!": "Xoá Tất Cả!",
   "Delete": "Xoá",
-  "Cancel": "Huỷ"
+  "Cancel": "Huỷ",
+  "Enter your full name": "Nhập họ và tên của bạn",
+  "Enter your Email": "Nhập email của bạn",
+  "Enter your Phone": "Nhập số điện thoại của bạn",
+  "There is no order yet": "Chưa có đơn hàng nào!",
+  "Product": "Tên sản phẩm",
+  "Total": "Tổng tiền",
+  "Customer": "Người nhận",
+  "Address": "Địa chỉ"
 }

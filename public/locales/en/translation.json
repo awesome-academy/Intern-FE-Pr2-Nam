@@ -32,5 +32,13 @@
   "Delete this product:": "Delete this product:",
   "Delete All Product!": "Delete All Product!",
   "Delete": "Delete",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+  "Enter your full name": "Enter your full name",
+  "Enter your Email": "Enter your Email",
+  "Enter your Phone": "Enter your Phone",
+  "There is no order yet":"There is no order yet",
+  "Product": "Product",
+  "Total": "Total",
+  "Customer": "Customer",
+  "Address": "Address"
 }

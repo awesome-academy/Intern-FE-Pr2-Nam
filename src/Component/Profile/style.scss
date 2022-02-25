@@ -1,0 +1,69 @@
+@import "../../style/mixin";
+@import "../../style/variables";
+
+.profile {
+    margin-top: 15rem;
+    height: 70vh;
+
+    .info {
+        padding-top: 5rem;
+
+        &__img {
+            height: 10rem;
+        }
+
+        &__edit-btn {
+            @include transition(all, 0.3s);
+            font-size: 20px;
+            float: right;
+            border: unset;
+
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+
+        &__main {
+            margin-top: 3rem;
+        }
+
+        &__sub {
+            margin-right: 2rem;
+        }
+    }
+
+    .order-history {
+        table {
+            border-spacing: 1;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        &__head {
+            height: 6rem;
+            background-color: $primaryColor;
+            color: $whiteColor;
+            text-align: center;
+        }
+
+        &__item {
+            text-align: center;
+            font-size: 16px;
+            color: $textColor;
+            font-weight: 600;
+
+            td {
+                @include paddingY(1.6rem, 1.6rem);
+            }
+
+            &:not(:last-child) {
+                border-bottom: $borderDefault;
+            }
+        }
+    }
+}
