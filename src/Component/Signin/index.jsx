@@ -11,6 +11,7 @@ import { regex_email, regex_password } from '../../const/regex'
 import { useTranslation } from "react-i18next";
 import { getUserFromDbJson } from "../../store/Slide/UserSlice"
 import { Link } from "react-router-dom";
+import { ADMIN_ROLE } from "../../const/regex"
 
 function Login() {
     const { t } = useTranslation()
@@ -41,7 +42,9 @@ function Login() {
                 )
                 const user = userFirebase.user
                 await dispatch(getUserFromDbJson(user.uid))
-                navigate(-1)
+                const { role } = JSON.parse(localStorage.getItem('user-info'));
+                const link = role === ADMIN_ROLE ? "/admin" : -1;
+                navigate(link)
             } catch (err) {
                 return err.message
             }

@@ -1,8 +1,9 @@
 import React,{ Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './i18n';
 import {store} from './store/store'
 import {Provider} from 'react-redux'
@@ -17,9 +18,12 @@ ReactDOM.render(
   <Suspense fallback="Loading...">
     <Provider store={store}>
       <React.StrictMode>
-        <Router>
-          <App />
-        </Router>
+        <BrowserRouter>
+          <Routes>
+            <Route path='*' element={<App />}/>
+            <Route path="/admin" element={<Admin />}/>
+          </Routes>
+        </BrowserRouter>
       </React.StrictMode>,
     </Provider>
   </Suspense>,

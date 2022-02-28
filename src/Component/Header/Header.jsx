@@ -20,6 +20,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase";
+import { USER_ROLE } from "../../const/regex"
 
 function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -55,7 +56,7 @@ function Header() {
     setToggleMenu((prevState) => !prevState);
   }
 
-  const menu = (
+  const menu = userInfo && userInfo.role === USER_ROLE ? (
     <Menu>
       <Menu.Item key="1">
         <Link to="/profile">Profile</Link>
@@ -64,7 +65,19 @@ function Header() {
         <button onClick={logOut}>Log out</button>
       </Menu.Item>
     </Menu>
-  );
+  ) : (
+    <Menu>
+      <Menu.Item key="1">
+        <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to="/admin">Admin</Link>
+      </Menu.Item>
+      <Menu.Item key="3">
+        <button onClick={logOut}>Log out</button>
+      </Menu.Item>
+    </Menu>
+  )
 
   return (
     <header className="header">
@@ -96,13 +109,11 @@ function Header() {
                     <span>{t("Home")}</span>
                   </Link>
                 </li>
-
                 <li>
                   <Link className="header_menu__list__item" to="/shop">
                     <span>{t("Shop")}</span>
                   </Link>
                 </li>
-
                 <li>
                   <Link className="header_menu__list__item" to="/account">
                     <span>{t("Account")}</span>
@@ -145,7 +156,6 @@ function Header() {
               </li>
             </ul>
           </nav>
-
           <ul className="header__account">
             <li className="header__account__list">
               <button
