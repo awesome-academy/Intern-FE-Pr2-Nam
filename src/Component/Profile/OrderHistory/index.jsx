@@ -51,9 +51,7 @@ function OrderHistory() {
                 }
             </tbody>
         </table>
-
     </div>
-
 }
 
 export default OrderHistory;

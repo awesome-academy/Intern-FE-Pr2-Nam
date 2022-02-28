@@ -170,7 +170,7 @@ function Header() {
               </Link>
               {userInfo ?
                 <Dropdown overlay={menu}  >
-                  <Link className="ant-dropdown-link" to="/profile" >
+                  <Link className="ant-dropdown-link" to="/profile">
                     {userInfo.full_name}
                   </Link>
                 </Dropdown>
