@@ -50,8 +50,9 @@ function Payment() {
                     .max(160, t("Max length reached")),
         }),
         onSubmit: () => {
-            localStorage.setItem('user-payment-info', JSON.stringify(formik.values))
-            dispatch(setPaymentInfo(formik.values))
+            const newInfo = { status: 'pending', ...formik.values }
+            localStorage.setItem('user-payment-info', JSON.stringify(newInfo))
+            dispatch(setPaymentInfo(newInfo))
             navigate("/cart")
         },
     });

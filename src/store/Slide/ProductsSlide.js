@@ -106,8 +106,6 @@ export const getPagination = createAsyncThunk(
     }
 )
 
-// 
-
 export const ProductsSlice  = createSlice({
     name: 'products',
     initialState,

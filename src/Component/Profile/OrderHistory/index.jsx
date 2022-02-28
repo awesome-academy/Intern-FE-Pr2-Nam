@@ -49,7 +49,6 @@ function OrderHistory() {
                             <td colSpan={6}>{t("There is no order yet")}</td>
                         </tr>
                 }
-
             </tbody>
         </table>
 

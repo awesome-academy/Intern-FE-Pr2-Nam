@@ -1,0 +1,15 @@
+@import "../style/variables";
+@import "../style/mixin";
+
+.admin {
+    &__header {
+        height: 5rem;
+        @include flex(row, space-between, center);
+    }
+
+    &__logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: $primaryColor;
+    }
+}

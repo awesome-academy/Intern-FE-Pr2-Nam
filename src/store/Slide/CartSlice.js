@@ -14,6 +14,7 @@ const initialState = {
         message: '',
         payment_method: '',
         phone: '',
+        status: '',
     }
 }
 

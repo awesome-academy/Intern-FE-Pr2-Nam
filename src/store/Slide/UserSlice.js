@@ -73,12 +73,13 @@ export const UserSlice = createSlice({
             state.isLoading = true
         })
         .addCase(getUserFromDbJson.fulfilled, (state, action) => {
-            const { full_name, email, phone, id} = action.payload
+            const { full_name, email, phone, id, role} = action.payload
             localStorage.setItem('user-info', JSON.stringify({
                 id,
                 full_name,
                 email,
-                phone
+                phone,
+                role
             }))
             state.isLoading = false
         })
