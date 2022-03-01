@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaymentInfo } from "../../store/Slide/CartSlice"
 import { regex_email, regex_name, regex_phone } from '../../const/regex'
+import { toast } from "react-toastify";
 
 function Payment() {
     const { t } = useTranslation()
@@ -51,6 +52,10 @@ function Payment() {
         }),
         onSubmit: () => {
             const newInfo = { status: 'pending', ...formik.values }
+            toast.success(t("Your infomation has been saved!"), {
+                position: "top-right",
+                autoClose: 2500,
+            });
             localStorage.setItem('user-payment-info', JSON.stringify(newInfo))
             dispatch(setPaymentInfo(newInfo))
             navigate("/cart")

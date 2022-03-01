@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { Form, Button } from "react-bootstrap"
 import { updateProductItemDbJson, getProducts, getShopProducts } from "../../../src/store/Slide/ProductsSlide"
 import { useDispatch, useSelector } from "react-redux"
+import { toast } from "react-toastify";
 
 function ModalAction({ item }) {
     const { t } = useTranslation()
@@ -95,6 +96,10 @@ function ModalAction({ item }) {
                 rating: ratingItem.value,
             }
         }))
+        toast.success(t("Product has been updated"), {
+            position: "top-right",
+            autoClose: 2500,
+        });
         dispatch(getShopProducts(filter));
     }
 

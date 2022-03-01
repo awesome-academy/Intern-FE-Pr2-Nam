@@ -1,8 +1,4 @@
 import "./style.scss";
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from 'antd';
 import Info from "./Info";
 import OrderHistory from "./OrderHistory";
@@ -17,6 +13,9 @@ function Profile() {
             </TabPane>
             <TabPane tab="Order History" key="2">
                 <OrderHistory />
+            </TabPane>
+            <TabPane tab="Wish List" key="3">
+                <span>Wishlist</span>
             </TabPane>
         </Tabs>
     );

@@ -7,16 +7,14 @@ import { useDispatch } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { addToCart } from "../../store/Slide/CartSlice";
-
 function ProductItem({ data }) {
   const { id, title, price, image, category } = data;
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
   const handleAddToCart = (item) => {
     toast.success(t("Product has been added to your cart"), {
       position: "top-right",
-      autoClose: 2500,
+      autoClose: 2000,
     });
     dispatch(addToCart({ ...item, quantity: 1 }));
   };

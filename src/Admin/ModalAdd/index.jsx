@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import Select from 'react-select';
 import { Form, Button } from "react-bootstrap"
 import { addProductItemDbJson, getProducts, getShopProducts } from "../../../src/store/Slide/ProductsSlide"
+import { toast } from "react-toastify";
 
 function ModalAdd({ close }) {
     const { t } = useTranslation()
@@ -88,6 +89,10 @@ function ModalAdd({ close }) {
             rating: ratingItem.value,
 
         }))
+        toast.success(t("Product has been added"), {
+            position: "top-right",
+            autoClose: 2500,
+        });
         dispatch(getShopProducts(filter));
     }
 

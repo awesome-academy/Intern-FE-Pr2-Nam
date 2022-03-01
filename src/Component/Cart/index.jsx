@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
 import { deleteAllProduct, setOrderToDbjson } from "../../store/Slide/CartSlice";
-import nextId from "react-id-generator";
+import { toast, ToastContainer } from "react-toastify";
 import "./style.scss";
 const { confirm } = Modal;
 
@@ -37,6 +37,10 @@ function Cart() {
       okType: 'danger',
       cancelText: t('Cancel'),
       onOk() {
+        toast.warn(t("You have deleted all products"), {
+          position: "top-right",
+          autoClose: 2500,
+        });
         dispatch(deleteAllProduct());
       },
     });
@@ -48,7 +52,7 @@ function Cart() {
 
   const confirmInfo = () => {
     const arr = { cart: cartListRender }
-    const payload = { id: nextId(), ...arr, ...usePaymentCheck, total: total }
+    const payload = { ...arr, ...usePaymentCheck, total: total }
     dispatch(setOrderToDbjson(payload))
     dispatch(deleteAllProduct())
     navigate("/")
@@ -148,6 +152,7 @@ function Cart() {
           </section>
         </div>
       </Container>
+      <ToastContainer />
     </div>
   );
 }

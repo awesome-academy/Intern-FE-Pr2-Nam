@@ -42,6 +42,9 @@ function OrderHistory() {
                                 <td>
                                     {item.address}
                                 </td>
+                                <td>
+                                    {item.status === 'Done' ? <h4>Đã xử lý</h4> : <h4>Đang xử lý</h4>}
+                                </td>
                             </tr>
                         ))
                         :
