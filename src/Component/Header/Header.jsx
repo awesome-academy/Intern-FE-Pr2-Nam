@@ -169,7 +169,7 @@ function Header() {
                 <FontAwesomeIcon icon={faSearch} />
               </Link>
               {userInfo ?
-                <Dropdown overlay={menu}  >
+                <Dropdown overlay={menu}>
                   <Link className="ant-dropdown-link" to="/profile">
                     {userInfo.full_name}
                   </Link>

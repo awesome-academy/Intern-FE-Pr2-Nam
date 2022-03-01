@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useSelector, useDispatch } from "react-redux"
 import Select from 'react-select';
 import { Form, Button } from "react-bootstrap"
-import { addProductItemDbJson, getProducts } from "../../../src/store/Slide/ProductsSlide"
+import { addProductItemDbJson, getProducts, getShopProducts } from "../../../src/store/Slide/ProductsSlide"
 
 function ModalAdd({ close }) {
     const { t } = useTranslation()
@@ -88,7 +88,7 @@ function ModalAdd({ close }) {
             rating: ratingItem.value,
 
         }))
-        dispatch(getProducts(filter));
+        dispatch(getShopProducts(filter));
     }
 
     return (

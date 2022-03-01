@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { getProducts, getShopProducts } from "../../../src/store/Slide/ProductsSlide"
+import { getShopProducts, deleteProduct } from "../../../src/store/Slide/ProductsSlide"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { Table } from "react-bootstrap"
+// import Colgroup from 'react-colgroup';
 import { FaTrash, FaEdit, FaPlus } from "react-icons/fa";
 import { Modal } from 'antd';
-import ModalAdd from "../ModalAdd"
 import ModalAction from "../Modal"
+import ModalAdd from "../ModalAdd"
 import Popup from "reactjs-popup";
 import Paginate from "../../Component/Pagination"
 const { confirm } = Modal;
@@ -20,6 +21,19 @@ function ProductManager() {
     useEffect(() => {
         dispatch(getShopProducts(filter));
     }, [filter, dispatch]);
+
+    const handleDelete = (id) => {
+        confirm({
+            title: t('Delete this products?'),
+            okText: t('Delete'),
+            okType: 'danger',
+            cancelText: t('Cancel'),
+            async onOk() {
+                await dispatch(deleteProduct(id))
+                dispatch(getShopProducts(filter));
+            },
+        });
+    }
 
     return (
         <section className="product-manager">
@@ -71,7 +85,7 @@ function ProductManager() {
                                     <td>{item.brand}</td>
                                     <td>{item.category}</td>
                                     <td>
-                                        <button>
+                                        <button onClick={() => handleDelete(item.id)}>
                                             <FaTrash />
                                         </button>
                                         <Popup modal
