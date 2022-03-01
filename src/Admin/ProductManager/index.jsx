@@ -6,6 +6,7 @@ import { Table } from "react-bootstrap"
 import { FaTrash, FaEdit, FaPlus } from "react-icons/fa";
 import { Modal } from 'antd';
 import ModalAdd from "../ModalAdd"
+import ModalAction from "../Modal"
 import Popup from "reactjs-popup";
 import Paginate from "../../Component/Pagination"
 const { confirm } = Modal;
@@ -61,7 +62,7 @@ function ProductManager() {
                             return (
                                 <tr key={index}>
                                     <td>{item.id}</td>
-                                    <td >
+                                    <td>
                                         <img style={{ width: "100px" }} alt={item.name} src={item.image} />
                                     </td>
                                     <td>{item.title}</td>
@@ -73,9 +74,15 @@ function ProductManager() {
                                         <button>
                                             <FaTrash />
                                         </button>
-                                        <button>
-                                            <FaEdit />
-                                        </button>
+                                        <Popup modal
+                                            trigger=
+                                            {
+                                                <button>
+                                                    <FaEdit />
+                                                </button>
+                                            }>
+                                            {close => <ModalAction item={item} />}
+                                        </Popup>
                                     </td>
                                 </tr>
                             )

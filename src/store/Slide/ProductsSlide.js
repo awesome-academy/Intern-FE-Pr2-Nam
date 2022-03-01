@@ -39,7 +39,7 @@ const initialState  = {
         isLoading: false,
     },
     selected: [],
-
+    error: null
 }
 
 //Get all products
@@ -106,6 +106,21 @@ export const getPagination = createAsyncThunk(
     }
 )
 
+// Update Product
+
+export const updateProductItemDbJson = createAsyncThunk(
+    'product/patch',
+    async ({id, newProductUpdate}) => {
+        try {
+            const res = await axios.patch(`${process.env.REACT_APP_DATA}/products/${id}`, newProductUpdate)
+            return res.data
+        }
+        catch(err) {
+            return err
+        }
+    }
+)
+
 // Add product
 
 export const addProductItemDbJson = createAsyncThunk(
@@ -149,6 +164,11 @@ export const ProductsSlice  = createSlice({
         })
         .addCase(getProducts.rejected, (state, action) => {
             state.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
         })
 
         .addCase(getHotProducts.pending, (state) => {
@@ -160,6 +180,11 @@ export const ProductsSlice  = createSlice({
         })
         .addCase(getHotProducts.rejected, (state, action) => {
             state.hot.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
         })
 
         .addCase(getShopProducts.pending, (state) => {
@@ -169,8 +194,13 @@ export const ProductsSlice  = createSlice({
             state.shop.isLoading = false
             state.shop.list = action.payload
         })
-        .addCase(getShopProducts.rejected, (state) => {
+        .addCase(getShopProducts.rejected, (state, action) => {
             state.shop.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
         })
 
         .addCase(getPagination.pending, (state) => {
@@ -180,8 +210,28 @@ export const ProductsSlice  = createSlice({
             state.pagination.isLoading = false
             state.pagination.list = action.payload
         })
-        .addCase(getPagination.rejected, (state) => {
+        .addCase(getPagination.rejected, (state, action) => {
             state.pagination.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
+        })
+
+        .addCase(updateProductItemDbJson.pending, (state) => {
+            state.shop.isLoading = true
+        })
+        .addCase(updateProductItemDbJson.fulfilled, (state, action) => {
+            state.shop.isLoading = false
+        })
+        .addCase(updateProductItemDbJson.rejected, (state, action) => {
+            state.shop.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
         })
     }
 })
