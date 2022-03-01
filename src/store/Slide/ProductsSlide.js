@@ -106,6 +106,21 @@ export const getPagination = createAsyncThunk(
     }
 )
 
+// Delete Product 
+
+export const deleteProduct = createAsyncThunk(
+    'products/delete',
+    async (id) => {
+        try {
+            const res = await axios.delete(`${process.env.REACT_APP_DATA}/products/${id}`)
+            return res.data
+        } 
+        catch (err) {
+            return err
+        }
+    }
+)
+
 // Update Product
 
 export const updateProductItemDbJson = createAsyncThunk(
@@ -226,6 +241,21 @@ export const ProductsSlice  = createSlice({
             state.shop.isLoading = false
         })
         .addCase(updateProductItemDbJson.rejected, (state, action) => {
+            state.shop.isLoading = false
+            if (action.payload) {
+                state.error = action.payload.errorMessage
+            } else {
+                state.error = action.error.message
+            }
+        })
+
+        .addCase(deleteProduct.pending, (state) => {
+            state.shop.isLoading = true
+        })
+        .addCase(deleteProduct.fulfilled, (state, action) => {
+            state.shop.isLoading = false
+        })
+        .addCase(deleteProduct.rejected, (state, action) => {
             state.shop.isLoading = false
             if (action.payload) {
                 state.error = action.payload.errorMessage
