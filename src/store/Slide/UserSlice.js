@@ -6,7 +6,7 @@ const userInfo = JSON.parse(localStorage.getItem('user-info'));
 const initialState = {
     displayName: userInfo ? userInfo.full_name : '',
     isLoading: false,
-    historyOrder: []
+    historyOrder: [],
 }
 
 export const addUserToDbJson = createAsyncThunk(
@@ -73,13 +73,14 @@ export const UserSlice = createSlice({
             state.isLoading = true
         })
         .addCase(getUserFromDbJson.fulfilled, (state, action) => {
-            const { full_name, email, phone, id, role} = action.payload
+            const { full_name, email, phone, id, role, wishList} = action.payload
             localStorage.setItem('user-info', JSON.stringify({
                 id,
                 full_name,
                 email,
                 phone,
-                role
+                role,
+                wishList
             }))
             state.isLoading = false
         })

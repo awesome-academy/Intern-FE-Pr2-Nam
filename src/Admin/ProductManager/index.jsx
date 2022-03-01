@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { getShopProducts, deleteProduct } from "../../../src/store/Slide/ProductsSlide"
+import { getProducts, getShopProducts, deleteProduct } from "../../../src/store/Slide/ProductsSlide"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { Table } from "react-bootstrap"
-// import Colgroup from 'react-colgroup';
 import { FaTrash, FaEdit, FaPlus } from "react-icons/fa";
 import { Modal } from 'antd';
 import ModalAction from "../Modal"
@@ -21,7 +20,6 @@ function ProductManager() {
     useEffect(() => {
         dispatch(getShopProducts(filter));
     }, [filter, dispatch]);
-
     const handleDelete = (id) => {
         confirm({
             title: t('Delete this products?'),

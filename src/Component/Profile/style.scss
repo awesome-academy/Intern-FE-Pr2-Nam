@@ -2,7 +2,7 @@
 @import "../../style/variables";
 
 .profile {
-    margin-top: 15rem;
+    @include marginY(6rem, 14rem);
     height: 70vh;
 
     .info {
@@ -17,6 +17,7 @@
             font-size: 20px;
             float: right;
             border: unset;
+            @include transition(all, 0.3s);
 
             &:hover {
                 color: $primaryColor;

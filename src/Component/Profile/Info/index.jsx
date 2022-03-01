@@ -8,6 +8,7 @@ import { Form, Button } from 'react-bootstrap'
 import * as Yup from 'yup'
 import { regex_email, regex_phone, regex_name } from '../../../const/regex'
 import { updateUser } from "../../../store/Slide/UserSlice"
+import { toast, ToastContainer } from "react-toastify";
 
 function Info() {
 
@@ -44,6 +45,10 @@ function Info() {
         onSubmit: async (value) => {
             try {
                 await dispatch(updateUser({ id: id, newUserData: formik.values })).unwrap()
+                toast.success(t("Your infomation has been updated!"), {
+                    position: "top-right",
+                    autoClose: 2500,
+                });
                 setIsOpenEdit(!isOpenEdit)
 
             } catch (err) {
@@ -119,6 +124,7 @@ function Info() {
                     }
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

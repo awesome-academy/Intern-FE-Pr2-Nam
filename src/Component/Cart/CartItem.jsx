@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Modal } from 'antd';
+import { toast } from "react-toastify";
 import {
   updateQuantity,
   deleteProductInCart,
@@ -27,6 +28,10 @@ function CartItem({ item }) {
       okType: 'danger',
       cancelText: t('Cancel'),
       onOk() {
+        toast.warn(t("Product has been deleted"), {
+          position: "top-right",
+          autoClose: 2500,
+        });
         dispatch(deleteProductInCart(item));
       },
     });

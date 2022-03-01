@@ -1,6 +1,7 @@
 import { Tabs } from 'antd';
 import { Container } from "react-bootstrap";
 import ProductManager from "./ProductManager"
+import OrderManager from "./OrderMangager"
 import {
     signOut,
 } from "firebase/auth";
@@ -8,6 +9,7 @@ import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import { Menu, Dropdown } from 'antd';
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 import "./style.scss";
 const { TabPane } = Tabs;
@@ -42,11 +44,10 @@ function Admin() {
                 <ProductManager />
             </TabPane>
             <TabPane tab="Order" key="2">
-                <span>Order</span>
+                <OrderManager />
             </TabPane>
         </Tabs>
     );
-
     return (
         <div className="admin">
             <Container>
@@ -60,6 +61,7 @@ function Admin() {
                 </header>
                 {<TabUi />}
             </Container>
+            <ToastContainer />
         </div>
     );
 }
