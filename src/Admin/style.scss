@@ -13,3 +13,38 @@
         color: $primaryColor;
     }
 }
+
+.popup-overlay {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+.popup-content {
+    width: 50%;
+    background-color: $whiteColor;
+    padding: 3rem 6rem;
+}
+
+.product-manager__table {
+    text-align: center;
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    thead {
+        background-color: $primaryColor;
+        color: $whiteColor;
+    }
+}
+
+.ant-tabs {
+    margin-top: 3rem !important;
+
+    &-nav-list {
+        margin-top: 3rem;
+    }
+}

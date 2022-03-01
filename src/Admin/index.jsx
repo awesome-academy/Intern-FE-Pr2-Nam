@@ -1,5 +1,6 @@
 import { Tabs } from 'antd';
 import { Container } from "react-bootstrap";
+import ProductManager from "./ProductManager"
 import {
     signOut,
 } from "firebase/auth";
@@ -38,20 +39,21 @@ function Admin() {
     const TabUi = () => (
         <Tabs tabPosition="left" defaultActiveKey="1">
             <TabPane tab="Product" key="1">
-                <span>Product</span>
+                <ProductManager />
             </TabPane>
             <TabPane tab="Order" key="2">
                 <span>Order</span>
             </TabPane>
         </Tabs>
     );
+
     return (
         <div className="admin">
             <Container>
                 <header className="admin__header">
                     <span className="admin__logo">Flatlogic</span>
-                    <Dropdown overlay={menu}  >
-                        <Link className="ant-dropdown-link" to="/profile" >
+                    <Dropdown overlay={menu}>
+                        <Link className="ant-dropdown-link" to="/profile">
                             {userInfo.full_name}
                         </Link>
                     </Dropdown>

@@ -106,6 +106,21 @@ export const getPagination = createAsyncThunk(
     }
 )
 
+// Add product
+
+export const addProductItemDbJson = createAsyncThunk(
+    'product/add',
+    async (newProduct) => {
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_DATA}/products`, newProduct)
+            return res.data
+        }
+        catch(err) {
+            return err
+        }
+    }
+)
+
 export const ProductsSlice  = createSlice({
     name: 'products',
     initialState,
