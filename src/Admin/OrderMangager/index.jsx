@@ -83,8 +83,8 @@ function OrderManager() {
                                                 ?
                                                 <>
                                                     <div className="d-flex">
-                                                        <button onClick={() => handleChangeStatus(item, type = "Done")}>Accept</button>
-                                                        <button onClick={() => handleChangeStatus(item, type = "Reject")}>Reject</button>
+                                                        <button className="admin__btn admin__btn--accept" onClick={() => handleChangeStatus(item, type = "Done")}>Accept</button>
+                                                        <button className="admin__btn admin__btn--reject" onClick={() => handleChangeStatus(item, type = "Reject")}>Reject</button>
                                                     </div>
                                                 </>
                                                 : <h4>{item.status}</h4>

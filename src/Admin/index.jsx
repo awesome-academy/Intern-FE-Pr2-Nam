@@ -3,14 +3,14 @@ import { Container } from "react-bootstrap";
 import ProductManager from "./ProductManager"
 import OrderManager from "./OrderMangager"
 import {
-    signOut,
+    signOut
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import { Menu, Dropdown } from 'antd';
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-
+import { FaRegSun } from "react-icons/fa";
 import "./style.scss";
 const { TabPane } = Tabs;
 
@@ -52,10 +52,13 @@ function Admin() {
         <div className="admin">
             <Container>
                 <header className="admin__header">
-                    <span className="admin__logo">Flatlogic</span>
-                    <Dropdown overlay={menu}>
-                        <Link className="ant-dropdown-link" to="/profile">
-                            {userInfo.full_name}
+                    <span className="admin__logo">Flatlogic </span>
+                    <Dropdown overlay={menu}  >
+                        <Link className="ant-dropdown-link admin__account" to="/profile" >
+                            <span>
+                                {userInfo.full_name}
+                            </span>
+                            <FaRegSun />
                         </Link>
                     </Dropdown>
                 </header>

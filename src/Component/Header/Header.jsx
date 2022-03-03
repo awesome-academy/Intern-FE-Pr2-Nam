@@ -158,11 +158,13 @@ function Header() {
           </nav>
           <ul className="header__account">
             <li className="header__account__list">
+
               <button
                 type="button"
                 onClick={handleChangeLanguage}
-                className="header__account__item btn mobile-hide"
+                className="header__account__item btn mobile-hide d-flex align-items-center justify-content-around"
               >
+                <h4 className="mb-0">{language}</h4>
                 <FontAwesomeIcon icon={faGlobe} />
               </button>
               <Link className="header__account__item mobile-hide" to="/shop">

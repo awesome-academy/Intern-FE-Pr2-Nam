@@ -8,6 +8,7 @@ import { Modal } from 'antd';
 import ModalAction from "../Modal"
 import ModalAdd from "../ModalAdd"
 import Popup from "reactjs-popup";
+import "./style.scss";
 import Paginate from "../../Component/Pagination"
 const { confirm } = Modal;
 
@@ -38,7 +39,7 @@ function ProductManager() {
             <Popup modal
                 trigger=
                 {
-                    <button>
+                    <button className="product-manager__add">
                         <FaPlus />
                     </button>
                 }>
@@ -83,13 +84,13 @@ function ProductManager() {
                                     <td>{item.brand}</td>
                                     <td>{item.category}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(item.id)}>
+                                        <button className="admin__btn" onClick={() => handleDelete(item.id)}>
                                             <FaTrash />
                                         </button>
                                         <Popup modal
                                             trigger=
                                             {
-                                                <button>
+                                                <button className="admin__btn">
                                                     <FaEdit />
                                                 </button>
                                             }>

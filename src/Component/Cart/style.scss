@@ -1,15 +1,20 @@
-@import '../../style/mixin';
-@import '../../style/variables';
+@import "../../style/mixin";
+@import "../../style/variables";
 
 .cart {
     padding-top: 15rem;
+
+    &__table-wrapper {
+        height: 64.8rem;
+        overflow-y: scroll;
+    }
 
     &__title {
         font-size: 28px;
         font-weight: 700;
         text-align: center;
     }
-    
+
     .table {
         border-collapse: collapse;
         text-align: center;
@@ -24,9 +29,8 @@
         }
 
         tbody {
-            height: 500px;
-            overflow: auto;
-            
+            position: relative;
+
             tr {
                 height: 10rem;
                 &:not(:last-child) {
@@ -36,7 +40,6 @@
 
             td {
                 @include paddingY(2rem, 2rem);
-
                 vertical-align: middle;
             }
         }
@@ -85,36 +88,36 @@
 
     &__del {
         font-size: 16px;
+        bottom: 0;
 
         &-btn {
             color: $whiteColor;
             width: 50%;
             background-color: $navColor;
-            border-radius: .5rem;
-            padding-bottom: .5rem;
+            border-radius: 0.5rem;
+            padding-bottom: 0.5rem;
             cursor: pointer;
-            @include transition(all, .3s);
-            
+            @include transition(all, 0.3s);
+
             &:hover {
                 background-color: $primaryColor;
-
             }
         }
 
         &-all {
-            @include paddingY(1rem,1rem);
-            @include transition(all, .3s);
-            float: right;
+            @include paddingY(1rem, 1rem);
+            @include transition(all, 0.3s);
+            @include position(absolute, unset, unset, 0, -6rem);
+            margin-top: 2rem;
             color: $whiteColor;
             width: 20%;
             background-color: $navColor;
             margin-right: 2rem;
-            border-radius: .5rem;
+            border-radius: 0.5rem;
             font-size: 1.5rem;
-            
+
             &:hover {
                 background-color: $primaryColor;
-
             }
         }
     }
@@ -126,7 +129,7 @@
         display: flex;
         flex-direction: column;
         font-size: 20px;
-    }   
+    }
 
     &__sub,
     &__info {
@@ -135,7 +138,7 @@
         margin-bottom: 0;
         font-style: italic;
 
-        &.last{
+        &.last {
             font-style: normal;
             font-size: 23px;
         }
@@ -147,7 +150,7 @@
 
     &__check-out {
         @include paddingY(1rem, 1rem);
-        @include transition(all, .3s);
+        @include transition(all, 0.3s);
         margin-top: auto;
         text-transform: uppercase;
         font-weight: 600;
