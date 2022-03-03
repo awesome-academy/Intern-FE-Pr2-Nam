@@ -52,7 +52,11 @@ function Cart() {
 
   const confirmInfo = () => {
     const arr = { cart: cartListRender }
-    const payload = { ...arr, ...usePaymentCheck, total: total }
+    const payload = { ...arr, ...usePaymentCheck, total: newTotal }
+    toast.warn(t("Thank for shopping, please check your inventory"), {
+      position: "top-right",
+      autoClose: 2500,
+    });
     dispatch(setOrderToDbjson(payload))
     dispatch(deleteAllProduct())
     navigate("/")
@@ -61,7 +65,7 @@ function Cart() {
   return (
     <div className="cart">
       <Container className="d-flex">
-        <div className="col-12 col-lg-8">
+        <div className="col-12 col-lg-8 cart__table-wrapper">
           <h2 className="mb-5 mt-5 cart__title">Shopping Cart</h2>
           <table className="table table-borderless">
             <thead>
@@ -81,11 +85,11 @@ function Cart() {
                   <td colSpan="6">Chưa có sản phẩm trong giỏ hàng</td>
                 </tr>
               )}
+              <button className="cart__del-all" onClick={() => handleDeleteAllProduct()}>
+                {t('Delete All Product!')}
+              </button>
             </tbody>
           </table>
-          <button className="cart__del-all" onClick={() => handleDeleteAllProduct()}>
-            {t('Delete All Product!')}
-          </button>
         </div>
         <div className="col-12 col-lg-4">
           <section className="cart__total">

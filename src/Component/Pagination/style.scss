@@ -1,5 +1,5 @@
-@import '../../style/variables';
-@import '../../style/mixin';
+@import "../../style/variables";
+@import "../../style/mixin";
 
 .pagination {
     margin-top: 3rem;
@@ -10,9 +10,9 @@
         &-item,
         &-item-link-icon,
         &-next {
-            @include boxShadow( 0, 10px, 27px, -20px, rgb(0 0 0 / 33%));
-            @include transition(all, .4s);
-            @include paddingX(1rem, 1rem);
+            @include boxShadow(0, 10px, 27px, -20px, rgb(0 0 0 / 33%));
+            @include transition(all, 0.4s);
+            @include paddingX(1rem, 1.8rem);
             border: none;
             cursor: pointer;
             text-align: center;
@@ -23,16 +23,19 @@
             height: 4rem;
             line-height: 3.3rem;
             border-radius: 50%;
-            color: rgba(0,0,0,.4);
+            color: rgba(0, 0, 0, 0.4);
             border: 2px solid $primaryColor;
             margin-right: 1rem;
-            
-            &:hover:not(:disabled){
+
+            &:hover:not(:disabled) {
                 background: $primaryColor;
-                color: $whiteColor;
                 border: 1px solid transparent;
+                a,
+                svg {
+                    color: $whiteColor;
+                }
             }
-    
+
             &:disabled {
                 opacity: 0.4;
             }
@@ -40,8 +43,10 @@
 
         &-item-active {
             background: $primaryColor;
-            color: $whiteColor;
             border: 1px solid transparent;
+            a {
+                color: $whiteColor;
+            }
         }
 
         &-item-ellipsis {
@@ -50,16 +55,19 @@
         }
 
         &-item-link {
-            padding: 0;
-
+            padding: 0 !important;
+            display: inline-block !important;
+            border: none !important;
+            height: 0 !important;
+            width: 0 !important;
             .anticon {
                 vertical-align: 0;
             }
         }
 
-        &-item-container{
+        &-item-container {
             display: flex;
-            align-items:center
+            align-items: center;
         }
 
         &-options {

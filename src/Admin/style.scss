@@ -8,9 +8,42 @@
     }
 
     &__logo {
-        font-size: 20px;
+        font-size: 50px;
         font-weight: 700;
         color: $primaryColor;
+    }
+
+    &__account {
+        font-size: 20px;
+        span {
+            margin-right: 1rem;
+        }
+    }
+
+    &__form-title {
+        text-align: center;
+        color: $primaryColor;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    &__btn {
+        @include transition(all, 0.3s);
+        color: $textColor;
+        font-size: 14px;
+        font-weight: 700;
+
+        &:hover {
+            color: $primaryColor;
+        }
+
+        &--accept {
+            color: $accept;
+        }
+
+        &--reject {
+            color: $reject;
+        }
     }
 }
 
@@ -21,24 +54,6 @@
     width: 50%;
     background-color: $whiteColor;
     padding: 3rem 6rem;
-}
-
-.product-manager__table {
-    text-align: center;
-    border-spacing: 1;
-    border-collapse: collapse;
-    background: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-
-    thead {
-        background-color: $primaryColor;
-        color: $whiteColor;
-    }
 }
 
 .ant-tabs {

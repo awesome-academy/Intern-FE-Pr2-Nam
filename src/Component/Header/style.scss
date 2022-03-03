@@ -1,5 +1,5 @@
-@import '../../style/mixin';
-@import '../../style/variables';
+@import "../../style/mixin";
+@import "../../style/variables";
 
 .header {
     @include position(fixed, 0);
@@ -19,9 +19,9 @@
         font-size: 2rem;
         line-height: 1.5;
         margin-left: 1rem;
-        
+
         @include Responsive(Mobile) {
-            display: block ;
+            display: block;
             z-index: $z-dropdown;
         }
     }
@@ -32,7 +32,7 @@
     }
 
     &__logo {
-        @include paddingY(0.3125rem,0.3125rem);
+        @include paddingY(0.3125rem, 0.3125rem);
         display: inline-block;
         font-size: 1.75rem;
 
@@ -41,7 +41,7 @@
             font-weight: 700;
         }
     }
-    
+
     &__nav {
         display: inline-block;
 
@@ -59,7 +59,7 @@
             display: inline-block;
             position: relative;
 
-            span {             
+            span {
                 color: $navColor;
                 display: flex;
                 padding: 0 1.6rem;
@@ -75,7 +75,7 @@
                     border-radius: 0.4rem;
                     background-color: $primaryColor;
                     opacity: 0;
-                    transition: all .35s ease;
+                    transition: all 0.35s ease;
                 }
 
                 &:hover {
@@ -97,22 +97,26 @@
 
         &__list {
             @include flex(row, center, center);
-            
+
             .mobile-hide {
                 @include Responsive(Mobile) {
-                    @include paddingX(0,0);
+                    @include paddingX(0, 0);
                     display: none;
                 }
             }
         }
 
         &__item {
-            @include paddingX(1.4rem,1.4rem);
+            @include paddingX(1.4rem, 1.4rem);
             color: $blackColor;
             font-size: 1.4rem;
 
+            h4 {
+                margin-right: 0.5rem;
+            }
+
             svg {
-                transition: all .35s ease;
+                transition: all 0.35s ease;
                 font-size: 1.4rem;
 
                 &:hover {
@@ -135,7 +139,7 @@
 
         .cart-header {
             position: relative;
-            
+
             &__total {
                 @include position(absolute, -1rem, 2.5rem, 0, 0);
                 height: 1.8rem;
@@ -145,7 +149,7 @@
                 color: $whiteColor;
                 border-radius: 50%;
                 background-color: $primaryColor;
-                align-items:center;
+                align-items: center;
                 padding: 0.5rem;
                 text-align: center;
             }
@@ -158,7 +162,7 @@
         z-index: $z-dropdown;
         height: 100vh;
         width: 30rem;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         nav {
             @include position(absolute, 0, 0, 0, 0);
@@ -169,7 +173,7 @@
             overflow-y: auto;
         }
 
-        &__close-btn{
+        &__close-btn {
             font-size: 2rem;
             line-height: 1.5;
             margin-left: 1rem;
@@ -183,7 +187,7 @@
             width: 100%;
             font-weight: 300;
             text-align: left;
-            transition: width .3s ease-in-out;
+            transition: width 0.3s ease-in-out;
             padding-left: 3.5rem;
 
             span {
@@ -201,7 +205,7 @@
 
             &__item {
                 padding-left: 3.5rem;
-                color : $whiteColor;
+                color: $whiteColor;
                 line-height: 5.5rem;
 
                 span {

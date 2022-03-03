@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../store/Slide/ProductsSlide";
+import { ToastContainer } from "react-toastify";
 
 function Products() {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ function Products() {
           <button className="btn btn_view-more">{t("View more")}</button>
         </Link>
       </Container>
+      <ToastContainer />
     </section>
   );
 }

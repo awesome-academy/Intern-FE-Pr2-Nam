@@ -69,7 +69,7 @@ function Signup() {
           phone
         }))
         dispatch(addUserToDbJson(newUser))
-        navigate('/')
+        navigate(-1)
       } catch (err) {
         return err.message
       }

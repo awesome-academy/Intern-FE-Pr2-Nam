@@ -2,6 +2,7 @@ import "./style.scss";
 import { Tabs } from 'antd';
 import Info from "./Info";
 import OrderHistory from "./OrderHistory";
+import WishList from "./WishList";
 import { Container } from "react-bootstrap"
 const { TabPane } = Tabs;
 
@@ -15,7 +16,7 @@ function Profile() {
                 <OrderHistory />
             </TabPane>
             <TabPane tab="Wish List" key="3">
-                <span>Wishlist</span>
+                <WishList />
             </TabPane>
         </Tabs>
     );

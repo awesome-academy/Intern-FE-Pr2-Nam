@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next"
 import { useSelector, useDispatch } from "react-redux"
 import Select from 'react-select';
-import { Form, Button } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import { addProductItemDbJson, getProducts, getShopProducts } from "../../../src/store/Slide/ProductsSlide"
 import { toast } from "react-toastify";
 
@@ -97,83 +97,80 @@ function ModalAdd({ close }) {
     }
 
     return (
-        <Form className="form-modal">
-            <Form.Group className='form-gr' controlId="name">
-                <Form.Label className='form-label'>Title :</Form.Label>
-                <Form.Control
-                    className='form-input'
-                    type="text"
-                    name="title"
-                    value={titleItem}
-                    onChange={(e) => setTitleItem(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group className='form-gr' controlId="desc">
-                <Form.Label className='form-label'>Desc :</Form.Label>
-                <Form.Control
-                    className='form-input'
-                    type="text"
-                    name="desc"
-                    value={descItem}
-                    onChange={(e) => setDescItem(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group className='form-gr' controlId="price">
-                <Form.Label className='form-label'>Price :</Form.Label>
-                <Form.Control
-                    className='form-input'
-                    type="text"
-                    name="price"
-                    value={priceItem}
-                    onChange={(e) => setPriceItem(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group className='form-gr' controlId="image">
-                <Form.Label className='form-label'>Image :</Form.Label>
-                <Form.Control
-                    className='form-input'
-                    type="text"
-                    name="image"
-                    value={imageItem}
-                    onChange={(e) => setImageItem(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group controlId='select'>
-                <Form.Label className='form-label'>{t('Rating')} :</Form.Label>
-                <Select
-                    className='form-select'
-                    onChange={setRatingItem}
-                    options={ratingList}
-                />
-            </Form.Group>
-            <Form.Group controlId='select'>
-                <Form.Label className='form-label'>{t('Brand')} :</Form.Label>
-                <Select
-                    className='form-select'
-
-                    onChange={setBrandItem}
-                    options={brandLists}
-                />
-            </Form.Group>
-            <Form.Group controlId='select'>
-                <Form.Label className='form-label'>{t('Categories')} :</Form.Label>
-                <Select
-                    className='form-select'
-                    onChange={setCategoryItem}
-                    options={categoyList}
-                />
-            </Form.Group>
-
-            <Form.Group controlId='select'>
-                <Form.Label className='form-label'>{t('Price Range')} :</Form.Label>
-                <Select
-                    className='form-select'
-                    onChange={setPriceRangeItem}
-                    options={priceRangeList}
-                />
-            </Form.Group>
-            <Button variant="outline-primary" type="submit" size="lg" onClick={handleSubmit}>Submit</Button>
-        </Form>
+        <>
+            <h1 className="admin__form-title">Add product</h1>
+            <Form className="form-modal">
+                <Form.Group className='form-gr' controlId="name">
+                    <Form.Label className='form-label'>Title :</Form.Label>
+                    <Form.Control
+                        className='form-input'
+                        type="text"
+                        name="title"
+                        value={titleItem}
+                        onChange={(e) => setTitleItem(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group className='form-gr' controlId="desc">
+                    <Form.Label className='form-label'>Desc :</Form.Label>
+                    <Form.Control
+                        className='form-input'
+                        type="text"
+                        name="desc"
+                        value={descItem}
+                        onChange={(e) => setDescItem(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group className='form-gr' controlId="price">
+                    <Form.Label className='form-label'>Price :</Form.Label>
+                    <Form.Control
+                        className='form-input'
+                        type="text"
+                        name="price"
+                        value={priceItem}
+                        onChange={(e) => setPriceItem(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group className='form-gr' controlId="image">
+                    <Form.Label className='form-label'>Image :</Form.Label>
+                    <Form.Control
+                        className='form-input'
+                        type="text"
+                        name="image"
+                        value={imageItem}
+                        onChange={(e) => setImageItem(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group controlId='select'>
+                    <Form.Label className='form-label'>{t('Rating')} :</Form.Label>
+                    <Select
+                        onChange={setRatingItem}
+                        options={ratingList}
+                    />
+                </Form.Group>
+                <Form.Group controlId='select'>
+                    <Form.Label className='form-label'>{t('Brand')} :</Form.Label>
+                    <Select
+                        onChange={setBrandItem}
+                        options={brandLists}
+                    />
+                </Form.Group>
+                <Form.Group controlId='select'>
+                    <Form.Label className='form-label'>{t('Categories')} :</Form.Label>
+                    <Select
+                        onChange={setCategoryItem}
+                        options={categoyList}
+                    />
+                </Form.Group>
+                <Form.Group controlId='select'>
+                    <Form.Label className='form-label'>{t('Price Range')} :</Form.Label>
+                    <Select
+                        onChange={setPriceRangeItem}
+                        options={priceRangeList}
+                    />
+                </Form.Group>
+            </Form>
+            <button className="btn_view-more mt-5" type="submit" size="lg" onClick={handleSubmit}>Submit</button>
+        </>
     )
 }
 

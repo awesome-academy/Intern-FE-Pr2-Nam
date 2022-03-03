@@ -112,3 +112,20 @@ input {
 .ant-tabs-nav-wrap {
     justify-content: center;
 }
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $primaryColor !important;
+    font-weight: 500;
+}
+
+.ant-tabs-tab {
+    &:hover {
+        color: $primaryColor !important;
+    }
+}
+
+.ant-tabs-ink-bar {
+    position: absolute;
+    background: $primaryColor;
+    pointer-events: none;
+}
